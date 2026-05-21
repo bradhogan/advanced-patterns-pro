@@ -13,10 +13,6 @@
 	var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
 	var __ = wp.i18n.__;
 
-	/**
-	 * Add blockId and blockRel attributes to all blocks,
-	 * plus makeBlockClickable for Cover and Group blocks.
-	 */
 	function addAttributes( settings, name ) {
 		if ( typeof settings.attributes !== 'undefined' ) {
 			settings.attributes = Object.assign( settings.attributes, {
@@ -49,9 +45,6 @@
 		addAttributes
 	);
 
-	/**
-	 * Add controls to the block inspector.
-	 */
 	var withAdvancedPatternsControls = createHigherOrderComponent( function( BlockEdit ) {
 		return function( props ) {
 			var attributes = props.attributes;
@@ -116,31 +109,96 @@
 
 } )( window.wp );
 
-// Wait for DOM to be ready.
-document.addEventListener('DOMContentLoaded', function() {
-	// Attach event listeners to toggle buttons.
-	document.querySelectorAll('.toggle-controls button').forEach(function(button) {
-		button.addEventListener('click', function(event) {
+// Frontend and editor click delegation for clickable Group/Cover blocks.
+document.addEventListener( 'DOMContentLoaded', function() {
+	document.querySelectorAll( '.toggle-controls button' ).forEach( function( button ) {
+		button.addEventListener( 'click', function( event ) {
 			event.preventDefault();
-			
-			// Get the rel attribute from the parent div.
-			const parentDiv = button.closest('[rel]');
-			
-			if (parentDiv) {
-				const relValue = parentDiv.getAttribute('rel');
-				
-				// Remove active class from all button parent divs and pricing options.
-				document.querySelectorAll('.toggle-controls [rel]').forEach(function(div) {
-					div.classList.remove('active');
-				});
-				document.querySelectorAll('.pricing-options').forEach(function(option) {
-					option.classList.remove('active');
-				});
-				
-				// Add active class to parent div and corresponding pricing option.
-				parentDiv.classList.add('active');
-				document.querySelector('.pricing-options[rel="' + relValue + '"]').classList.add('active');
+
+			const parentDiv = button.closest( '[rel]' );
+
+			if ( parentDiv ) {
+				const relValue = parentDiv.getAttribute( 'rel' );
+
+				document.querySelectorAll( '.toggle-controls [rel]' ).forEach( function( div ) {
+					div.classList.remove( 'active' );
+				} );
+				document.querySelectorAll( '.pricing-options' ).forEach( function( option ) {
+					option.classList.remove( 'active' );
+				} );
+
+				parentDiv.classList.add( 'active' );
+				const targetOption = document.querySelector( '.pricing-options[rel="' + relValue + '"]' );
+				if ( targetOption ) {
+					targetOption.classList.add( 'active' );
+				}
 			}
-		});
-	});
-});
+		} );
+	} );
+
+	function isInteractiveElement( element ) {
+		return !! element.closest( 'a, button, input, select, textarea, summary, [role="button"], .wp-block-button' );
+	}
+
+	function getPrimaryLink( container ) {
+		var links = container.querySelectorAll( 'a[href]' );
+		var fallback = null;
+
+		for ( var i = 0; i < links.length; i++ ) {
+			var link = links[i];
+			if ( link.classList.contains( 'appro-clickable-block__overlay' ) ) {
+				continue;
+			}
+
+			var href = ( link.getAttribute( 'href' ) || '' ).trim();
+			if ( ! href ) {
+				continue;
+			}
+
+			if ( ! fallback ) {
+				fallback = link;
+			}
+
+			if ( ! link.closest( '.wp-block-button' ) ) {
+				return link;
+			}
+		}
+
+		return fallback;
+	}
+
+	function handleClickableBlock( event ) {
+		var container = event.currentTarget;
+
+		if ( isInteractiveElement( event.target ) ) {
+			return;
+		}
+
+		var primaryLink = getPrimaryLink( container );
+		if ( ! primaryLink ) {
+			return;
+		}
+
+		var href = primaryLink.getAttribute( 'href' );
+		if ( ! href ) {
+			return;
+		}
+
+		if ( event.metaKey || event.ctrlKey ) {
+			window.open( href, primaryLink.getAttribute( 'target' ) || '_blank' );
+			return;
+		}
+
+		if ( primaryLink.getAttribute( 'target' ) === '_blank' ) {
+			window.open( href, '_blank' );
+			return;
+		}
+
+		window.location.href = href;
+	}
+
+	document.querySelectorAll( '.appro-clickable-block[data-appro-clickable="true"]' ).forEach( function( block ) {
+		block.style.cursor = 'pointer';
+		block.addEventListener( 'click', handleClickableBlock );
+	} );
+} );

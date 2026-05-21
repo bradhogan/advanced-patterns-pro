@@ -171,33 +171,11 @@ ul.is-style-lines li:first-of-type:before {
 }
 
 .appro-clickable-block {
-  position: relative;
+  cursor: pointer;
 }
-.appro-clickable-block > *:not(.appro-clickable-block__overlay) {
-  position: relative;
-  z-index: 2;
-}
-.appro-clickable-block > .appro-clickable-block__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: block;
-  text-indent: -9999px;
-  overflow: hidden;
-}
-.appro-clickable-block > .wp-block-cover__inner-container,
-.appro-clickable-block > .wp-block-group__inner-container,
-.appro-clickable-block > .wp-block-cover__background,
-.appro-clickable-block > .wp-block-cover__image-background {
-  position: relative;
-}
-.appro-clickable-block :where(.wp-block-button, button, input, select, textarea, summary, [role=button]) {
-  position: relative;
-  z-index: 3;
-}
-.appro-clickable-block :where(.wp-block-button a, .wp-element-button, button, input, select, textarea, summary, [role=button]) {
-  position: relative;
-  z-index: 4;
+
+.appro-clickable-block :where(a, button, input, select, textarea, summary, [role=button]) {
+  cursor: auto;
 }
 
 .testimonial-card-height-100 .wp-block-cover__inner-container {

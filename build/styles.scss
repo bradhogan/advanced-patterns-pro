@@ -20,9 +20,7 @@
 	margin-top: 0;
 }
 
-
 // PRICING TOGGLES
-
 .toggle-controls {
 	width: fit-content;
 }
@@ -48,7 +46,6 @@ body.block-editor-page .pricing-options,
 	display: block;
 }
 
-
 // LIST STYLE: CHECKMARKS
 ul.is-style-checkmarks {
 	list-style: none;
@@ -72,7 +69,6 @@ ul.is-style-checkmarks {
 		}
 	}
 }
-
 
 // STYLE > LIST BLOCK: LINES
 ul.is-style-lines {
@@ -103,7 +99,6 @@ ul.is-style-lines {
 	}
 }
 
-
 // STYLE > POST TERMS BLOCK: PILL
 .is-style-pill {
 	display: flex;
@@ -123,7 +118,6 @@ ul.is-style-lines {
 	}
 }
 
-
 // GALLERY BLOCK
 .wp-block-gallery.is-style-has-vertical-align {
 	figure.wp-block-image {
@@ -132,53 +126,49 @@ ul.is-style-lines {
 	}
 }
 
-
 // CARDS: GRID SCROLL
 .scroller-section {
 	overflow: hidden;
 }
 
-.scroller{
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-
-  /* optional: make it feel draggable */
-  cursor: grab;
-  user-select: none;
-
-  /* scrollbar aesthetics */
-  scrollbar-width: thin;
+.scroller {
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	cursor: grab;
+	user-select: none;
+	scrollbar-width: thin;
 }
-.scroller:active{ cursor: grabbing; }
 
-/* This pseudo-element creates the left “empty space” that makes the initial view look inset/centered. */
+.scroller:active {
+	cursor: grabbing;
+}
+
 .scroller::before,
-.scroller::after{
-  content: "";
-  flex: 0 0 auto;
-  width: max(var(--wp--style--root--padding-left), calc((100vw - var(--wp--style--global--wide-size)) / 2));
+.scroller::after {
+	content: "";
+	flex: 0 0 auto;
+	width: max(var(--wp--style--root--padding-left), calc((100vw - var(--wp--style--global--wide-size)) / 2));
 }
 
-.scroller-track{
-  display: flex;
-  align-items: stretch;
-  padding: 0;
+.scroller-track {
+	display: flex;
+	align-items: stretch;
+	padding: 0;
 }
 
 .scroller {
-  display: flex;
-  align-items: flex-start;
-  gap: 0 !important;
+	display: flex;
+	align-items: flex-start;
+	gap: 0 !important;
 }
 
 .scroller-card {
-  flex: 0 0 auto;
-  width: 320px;
-  height: stretch;
+	flex: 0 0 auto;
+	width: 320px;
+	height: stretch;
 }
-
 
 // CIRCLE NUMBER
 .circle-number {
@@ -187,7 +177,6 @@ ul.is-style-lines {
 	display: flex;
 	align-items: center;
 }
-
 
 // STYLE: ICON BLOCK
 .is-style-icon-block {
@@ -199,43 +188,14 @@ ul.is-style-lines {
 	margin-left: 0 !important;
 }
 
-
 // CLICKABLE COVER/GROUP BLOCKS
 .appro-clickable-block {
-	position: relative;
-
-	> *:not(.appro-clickable-block__overlay) {
-		position: relative;
-		z-index: 2;
-	}
-
-	> .appro-clickable-block__overlay {
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-		display: block;
-		text-indent: -9999px;
-		overflow: hidden;
-	}
-
-	> .wp-block-cover__inner-container,
-	> .wp-block-group__inner-container,
-	> .wp-block-cover__background,
-	> .wp-block-cover__image-background {
-		position: relative;
-	}
-
-	:where(.wp-block-button, button, input, select, textarea, summary, [role="button"]) {
-		position: relative;
-		z-index: 3;
-	}
-	
-	:where(.wp-block-button a, .wp-element-button, button, input, select, textarea, summary, [role="button"]) {
-		position: relative;
-		z-index: 4;
-	}
+	cursor: pointer;
 }
 
+.appro-clickable-block :where(a, button, input, select, textarea, summary, [role="button"]) {
+	cursor: auto;
+}
 
 // A FEW FIXES
 .testimonial-card-height-100 {
@@ -249,27 +209,21 @@ ul.is-style-lines {
 	box-sizing: border-box;
 }
 
-
 // TABLET ADJUSTMENTS
 @media ( max-width: 1024px ) {
-	
 	.is-grid-4 {
 		grid-template-columns: repeat(2,minmax(0,1fr)) !important;
 	}
-
 }
-
 
 // MOBILE ADJUSTMENTS
 @media ( max-width: 767px ) {
-	
 	.m-width-100 > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
 		max-width: 100% !important;
 	}
 	.m-width-100 {
 		flex-basis: 100% !important;
 	}
-	
 	.mp-0 {
 		padding: 0 !important;
 	}
@@ -315,30 +269,24 @@ ul.is-style-lines {
 	.mm-b-0 {
 		margin-bottom: 0 !important;
 	}
-	
 	.m-align-left {
 		justify-content: flex-start !important;
 	}
-	
 	.mgap-10 {
 		gap: 10px !important;
 	}
-	
 	.is-grid-3,
 	.grid-m-1 {
 		grid-template-columns: repeat(1,minmax(0,1fr)) !important;
 	}
-	
 	.wp-block-gallery.columns-3.m-logos-3-to-row,
 	.wp-block-gallery.columns-4.m-logos-3-to-row,
 	.wp-block-gallery.columns-5.m-logos-3-to-row,
 	.wp-block-gallery.columns-6.m-logos-3-to-row {
 		width: calc(50% - var(--wp--style--unstable-gallery-gap, 16px) / 3);
 	}
-	
 	.m-logos-nowrap {
 		flex-flow: nowrap !important;
 		gap: 30px !important;
 	}
-	
 }
