@@ -1,0 +1,16 @@
+<?php
+// Prevent direct access.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Authors, three columns
+ */
+return array(
+	'name'        => 'authors-three-columns',
+	'title'       => 'Three columns with book cover',
+	'description' => 'A three column layout to showcase a single book.',
+	'categories'  => array( 'appro-authors' ),
+	'content'     => '<!-- wp:cover {"dimRatio":50,"customOverlayColor":"#edebe1","isUserOverlayColor":true,"isDark":false,"align":"full","layout":{"type":"constrained"}} --><div class="wp-block-cover alignfull is-light"><span aria-hidden="true" class="wp-block-cover__background has-background-dim" style="background-color:#edebe1"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"align":"wide","layout":{"type":"constrained"}} --><div class="wp-block-group alignwide"><!-- wp:group {"align":"wide","layout":{"type":"constrained","wideSize":"70%","justifyContent":"left"}} --><div class="wp-block-group alignwide"><!-- wp:heading {"level":1,"align":"wide","fitText":true} --><h1 class="wp-block-heading alignwide has-fit-text">New Release</h1><!-- /wp:heading --></div><!-- /wp:group --><!-- wp:columns {"align":"wide","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"blockGap":{"left":"var:preset|spacing|50"}}}} --><div class="wp-block-columns alignwide" style="margin-top:0;margin-bottom:0"><!-- wp:column {"verticalAlignment":"bottom","width":"","style":{"spacing":{"padding":{"top":"var:preset|spacing|40"}}}} --><div class="wp-block-column is-vertically-aligned-bottom" style="padding-top:var(--wp--preset--spacing--40)"><!-- wp:heading --><h2 class="wp-block-heading"><mark style="background-color:rgba(0, 0, 0, 0);color:#0000007d" class="has-inline-color">NYTimes</mark><br>Bestselling<br><mark style="background-color:rgba(0, 0, 0, 0);color:#0000007d" class="has-inline-color">Author</mark></h2><!-- /wp:heading --></div><!-- /wp:column --><!-- wp:column {"width":"","className":"mp-0","style":{"spacing":{"padding":{"right":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} --><div class="wp-block-column mp-0" style="padding-right:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:image {"id":607,"sizeSlug":"large","linkDestination":"none","align":"center","style":{"shadow":"var:preset|shadow|natural"}} --><figure class="wp-block-image aligncenter size-large"><img src="{{PLUGIN_URL}}images/book.jpg" alt="" class="wp-image-607" style="box-shadow:var(--wp--preset--shadow--natural)"/></figure><!-- /wp:image --></div><!-- /wp:column --><!-- wp:column {"verticalAlignment":"bottom","width":""} --><div class="wp-block-column is-vertically-aligned-bottom"><!-- wp:paragraph {"fontSize":"small"} --><p class="has-small-font-size">Bacon ipsum dolor amet pork loin venison pork, porchetta alcatra doner chislic shankle capicola brisket ham. Sausage frankfurter shoulder rump, landjaeger short ribs turkey pork chop prosciutto meatloaf.</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Order Now</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div><!-- /wp:column --></div><!-- /wp:columns --></div><!-- /wp:group --></div></div><!-- /wp:cover -->',
+);
