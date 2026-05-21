@@ -28,7 +28,7 @@ if ( ! defined( 'advancedpatternspro_PLUGIN_URL' ) ) {
 }
 
 /**
- * Register block styles
+ * Register block styles.
  */
 function advancedpatternspro_register_block_styles() {
 	register_block_style(
@@ -212,7 +212,10 @@ function cc_mime_types( $mimes ) {
 add_filter( 'upload_mimes', 'cc_mime_types' );
 
 /**
- * Register custom block attributes for ID, rel, and clickable block support.
+ * Register custom block attributes for ID and rel across blocks.
+ *
+ * Cover and Group blocks also get the makeBlockClickable boolean used by the
+ * editor control and frontend click-delegation behavior.
  */
 function appro_register_block_id_rel_attributes() {
 	$block_types = WP_Block_Type_Registry::get_instance()->get_all_registered();
@@ -291,6 +294,9 @@ add_filter( 'render_block', 'appro_add_block_id_rel_attributes', 10, 2 );
 
 /**
  * Mark Cover and Group blocks as clickable without injecting overlay markup.
+ *
+ * The frontend behavior is handled in build/appro.js using click delegation so
+ * Cover block visuals and nested interactive controls remain stable.
  */
 function appro_make_block_clickable( $block_content, $block ) {
 	if ( empty( $block_content ) || empty( $block['blockName'] ) || empty( $block['attrs']['makeBlockClickable'] ) ) {

@@ -3,5 +3,7 @@
 ## 1.0.1
 - Added a new **Link settings** panel for **Cover** and **Group** blocks.
 - Added a **Make block clickable** toggle for Cover and Group blocks.
-- When enabled, the **first link inside the block** is stretched to make the entire block clickable.
-- Added supporting editor controls, render handling, and styles for clickable block behavior.
+- Updated block-wide click behavior to use **JavaScript click delegation** instead of overlay markup.
+- Fixed clickable behavior for Group and Cover blocks so nested buttons and links behave more predictably.
+- Removed overlay-based rendering that could interfere with Cover block visuals and colors.
+- Added supporting editor controls, render markers, and styles for clickable block behavior.
