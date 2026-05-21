@@ -325,7 +325,8 @@ add_filter( 'render_block', 'appro_add_block_id_rel_attributes', 10, 2 );
 
 
 /**
- * Make Cover and Group blocks clickable by stretching the first inner link.
+ * Make Cover and Group blocks clickable by adding a full-block overlay link
+ * that inherits its URL from the first inner link.
  */
 function appro_make_block_clickable( $block_content, $block ) {
 	if ( empty( $block_content ) || empty( $block['blockName'] ) || empty( $block['attrs']['makeBlockClickable'] ) ) {
@@ -402,12 +403,29 @@ function appro_make_block_clickable( $block_content, $block ) {
 	$classes[] = 'appro-clickable-block';
 	$root_element->setAttribute( 'class', implode( ' ', array_unique( $classes ) ) );
 
-	$primary_link_class = $primary_link->getAttribute( 'class' );
-	$link_classes = preg_split( '/\s+/', trim( $primary_link_class ) );
-	$link_classes = is_array( $link_classes ) ? array_filter( $link_classes ) : array();
-	$link_classes[] = 'appro-clickable-block__link';
-	$primary_link->setAttribute( 'class', implode( ' ', array_unique( $link_classes ) ) );
-	$primary_link->setAttribute( 'aria-label', wp_strip_all_tags( $primary_link->textContent ) );
+	$overlay_link = $dom->createElement( 'a' );
+	$overlay_link->setAttribute( 'class', 'appro-clickable-block__overlay' );
+	$overlay_link->setAttribute( 'href', $primary_link->getAttribute( 'href' ) );
+
+	if ( $primary_link->hasAttribute( 'target' ) ) {
+		$overlay_link->setAttribute( 'target', $primary_link->getAttribute( 'target' ) );
+	}
+
+	if ( $primary_link->hasAttribute( 'rel' ) ) {
+		$overlay_link->setAttribute( 'rel', $primary_link->getAttribute( 'rel' ) );
+	}
+
+	$aria_label = trim( wp_strip_all_tags( $primary_link->textContent ) );
+	if ( '' === $aria_label ) {
+		$aria_label = __( 'Open linked content', 'advanced-patterns-pro' );
+	}
+	$overlay_link->setAttribute( 'aria-label', $aria_label );
+
+	if ( $root_element->firstChild ) {
+		$root_element->insertBefore( $overlay_link, $root_element->firstChild );
+	} else {
+		$root_element->appendChild( $overlay_link );
+	}
 
 	$inner_content = '';
 	foreach ( $wrapper->childNodes as $child ) {

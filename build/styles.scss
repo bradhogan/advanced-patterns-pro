@@ -204,25 +204,35 @@ ul.is-style-lines {
 .appro-clickable-block {
 	position: relative;
 
-	.appro-clickable-block__link {
-		position: static;
-
-		&::after {
-			content: '';
-			position: absolute;
-			inset: 0;
-			z-index: 10;
-		}
+	> *:not(.appro-clickable-block__overlay) {
+		position: relative;
+		z-index: 2;
 	}
 
-	:where(.wp-block-button, .wp-element-button, button, input, select, textarea, summary, [role="button"]) {
+	> .appro-clickable-block__overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		display: block;
+		text-indent: -9999px;
+		overflow: hidden;
+	}
+
+	> .wp-block-cover__inner-container,
+	> .wp-block-group__inner-container,
+	> .wp-block-cover__background,
+	> .wp-block-cover__image-background {
 		position: relative;
-		z-index: 20;
+	}
+
+	:where(.wp-block-button, button, input, select, textarea, summary, [role="button"]) {
+		position: relative;
+		z-index: 3;
 	}
 	
 	:where(.wp-block-button a, .wp-element-button, button, input, select, textarea, summary, [role="button"]) {
 		position: relative;
-		z-index: 20;
+		z-index: 4;
 	}
 }
 
