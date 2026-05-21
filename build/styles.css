@@ -59,7 +59,7 @@ ul.is-style-checkmarks li:before {
   top: 1px;
   height: 20px;
   width: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353l4.493-6.74a.75.75 0 0 1 1.04-.207' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207' clip-rule='evenodd'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -95,7 +95,7 @@ ul.is-style-lines li:first-of-type:before {
 }
 .is-style-pill a {
   border: 1px solid;
-  color: currentcolor;
+  color: currentColor;
   padding: 8px 12px;
   border-radius: 50px;
   font-size: 13px;
@@ -120,10 +120,8 @@ ul.is-style-lines li:first-of-type:before {
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  /* optional: make it feel draggable */
   cursor: grab;
   user-select: none;
-  /* scrollbar aesthetics */
   scrollbar-width: thin;
 }
 
@@ -131,7 +129,6 @@ ul.is-style-lines li:first-of-type:before {
   cursor: grabbing;
 }
 
-/* This pseudo-element creates the left “empty space” that makes the initial view look inset/centered. */
 .scroller::before,
 .scroller::after {
   content: "";
@@ -171,6 +168,27 @@ ul.is-style-lines li:first-of-type:before {
   align-items: center;
   justify-items: center;
   margin-left: 0 !important;
+}
+
+.appro-clickable-block {
+  position: relative;
+}
+.appro-clickable-block .appro-clickable-block__link {
+  position: static;
+}
+.appro-clickable-block .appro-clickable-block__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+.appro-clickable-block :where(.wp-block-button, .wp-element-button, button, input, select, textarea, summary, [role=button]) {
+  position: relative;
+  z-index: 20;
+}
+.appro-clickable-block :where(.wp-block-button a, .wp-element-button, button, input, select, textarea, summary, [role=button]) {
+  position: relative;
+  z-index: 20;
 }
 
 .testimonial-card-height-100 .wp-block-cover__inner-container {

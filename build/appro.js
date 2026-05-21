@@ -1,20 +1,23 @@
 /**
- * Add ID and rel controls to the block inspector
+ * Add ID, rel, and clickable block controls to the block inspector.
  */
 ( function( wp ) {
 	var addFilter = wp.hooks.addFilter;
 	var createElement = wp.element.createElement;
 	var Fragment = wp.element.Fragment;
 	var InspectorAdvancedControls = wp.blockEditor.InspectorAdvancedControls;
+	var InspectorControls = wp.blockEditor.InspectorControls;
+	var PanelBody = wp.components.PanelBody;
 	var TextControl = wp.components.TextControl;
+	var ToggleControl = wp.components.ToggleControl;
 	var createHigherOrderComponent = wp.compose.createHigherOrderComponent;
 	var __ = wp.i18n.__;
 
 	/**
-	 * Add blockId and blockRel attributes to all blocks
+	 * Add blockId and blockRel attributes to all blocks,
+	 * plus makeBlockClickable for Cover and Group blocks.
 	 */
-	function addAttributes( settings ) {
-		// Check if attributes exist, if not add them
+	function addAttributes( settings, name ) {
 		if ( typeof settings.attributes !== 'undefined' ) {
 			settings.attributes = Object.assign( settings.attributes, {
 				blockId: {
@@ -26,6 +29,15 @@
 					default: ''
 				}
 			} );
+
+			if ( name === 'core/cover' || name === 'core/group' ) {
+				settings.attributes = Object.assign( settings.attributes, {
+					makeBlockClickable: {
+						type: 'boolean',
+						default: false
+					}
+				} );
+			}
 		}
 
 		return settings;
@@ -38,14 +50,16 @@
 	);
 
 	/**
-	 * Add controls to the Advanced panel in the block inspector
+	 * Add controls to the block inspector.
 	 */
-	var withIdRelControls = createHigherOrderComponent( function( BlockEdit ) {
+	var withAdvancedPatternsControls = createHigherOrderComponent( function( BlockEdit ) {
 		return function( props ) {
 			var attributes = props.attributes;
 			var setAttributes = props.setAttributes;
 			var blockId = attributes.blockId || '';
 			var blockRel = attributes.blockRel || '';
+			var makeBlockClickable = !! attributes.makeBlockClickable;
+			var supportsClickable = props.name === 'core/cover' || props.name === 'core/group';
 
 			return createElement(
 				Fragment,
@@ -70,34 +84,52 @@
 						},
 						help: __( 'Add a rel attribute to this block (e.g., "nofollow").', 'appro' )
 					} )
+				),
+				supportsClickable && createElement(
+					InspectorControls,
+					{},
+					createElement(
+						PanelBody,
+						{
+							title: __( 'Link settings', 'advanced-patterns-pro' ),
+							initialOpen: true
+						},
+						createElement( ToggleControl, {
+							label: __( 'Make block clickable', 'advanced-patterns-pro' ),
+							checked: makeBlockClickable,
+							onChange: function( value ) {
+								setAttributes( { makeBlockClickable: value } );
+							},
+							help: __( 'Stretch first inner link to entire block.', 'advanced-patterns-pro' )
+						} )
+					)
 				)
 			);
 		};
-	}, 'withIdRelControls' );
+	}, 'withAdvancedPatternsControls' );
 
 	addFilter(
 		'editor.BlockEdit',
-		'appro/with-id-rel-controls',
-		withIdRelControls
+		'appro/with-advanced-patterns-controls',
+		withAdvancedPatternsControls
 	);
 
 } )( window.wp );
 
-
-// Wait for DOM to be ready
+// Wait for DOM to be ready.
 document.addEventListener('DOMContentLoaded', function() {
-	// Attach event listeners to toggle buttons
+	// Attach event listeners to toggle buttons.
 	document.querySelectorAll('.toggle-controls button').forEach(function(button) {
 		button.addEventListener('click', function(event) {
 			event.preventDefault();
 			
-			// Get the rel attribute from the parent div
+			// Get the rel attribute from the parent div.
 			const parentDiv = button.closest('[rel]');
 			
 			if (parentDiv) {
 				const relValue = parentDiv.getAttribute('rel');
 				
-				// Remove active class from all button parent divs and pricing options
+				// Remove active class from all button parent divs and pricing options.
 				document.querySelectorAll('.toggle-controls [rel]').forEach(function(div) {
 					div.classList.remove('active');
 				});
@@ -105,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					option.classList.remove('active');
 				});
 				
-				// Add active class to parent div and corresponding pricing option
+				// Add active class to parent div and corresponding pricing option.
 				parentDiv.classList.add('active');
 				document.querySelector('.pricing-options[rel="' + relValue + '"]').classList.add('active');
 			}
