@@ -157,19 +157,6 @@ function bindApproInteractions( doc ) {
 	} );
 
 	syncAllPricingToggles( doc );
-
-	if ( window.MutationObserver ) {
-		var observer = new MutationObserver( function() {
-			syncAllPricingToggles( doc );
-		} );
-
-		observer.observe( doc.body, {
-			childList: true,
-			subtree: true,
-			attributes: true,
-			attributeFilter: [ 'class' ]
-		} );
-	}
 }
 
 document.addEventListener( 'DOMContentLoaded', function() {
