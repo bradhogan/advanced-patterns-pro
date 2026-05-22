@@ -1,4 +1,8 @@
-function approHandleToggleClick( root, button ) {
+function getToggleScope( button, fallbackRoot ) {
+	return button.closest( '.appro-pricing-toggle' ) || fallbackRoot;
+}
+
+function approHandleToggleClick( fallbackRoot, button ) {
 	var parentDiv = button.closest( '[rel]' );
 
 	if ( ! parentDiv ) {
@@ -6,18 +10,19 @@ function approHandleToggleClick( root, button ) {
 	}
 
 	var relValue = parentDiv.getAttribute( 'rel' );
+	var scope = getToggleScope( button, fallbackRoot );
 
-	root.querySelectorAll( '.toggle-controls [rel]' ).forEach( function( div ) {
+	scope.querySelectorAll( '.toggle-controls [rel]' ).forEach( function( div ) {
 		div.classList.remove( 'active' );
 	} );
 
-	root.querySelectorAll( '.pricing-options' ).forEach( function( option ) {
+	scope.querySelectorAll( '.pricing-options' ).forEach( function( option ) {
 		option.classList.remove( 'active' );
 	} );
 
 	parentDiv.classList.add( 'active' );
 
-	var targetOption = root.querySelector( '.pricing-options[rel="' + relValue + '"]' );
+	var targetOption = scope.querySelector( '.pricing-options[rel="' + relValue + '"]' );
 	if ( targetOption ) {
 		targetOption.classList.add( 'active' );
 	}
