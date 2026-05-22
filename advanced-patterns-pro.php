@@ -241,6 +241,10 @@ function appro_add_block_id_rel_attributes( $block_content, $block ) {
 		return $block_content;
 	}
 
+	if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
+		return $block_content;
+	}
+
 	$block_id  = isset( $block['attrs']['blockId'] ) ? $block['attrs']['blockId'] : '';
 	$block_rel = isset( $block['attrs']['blockRel'] ) ? $block['attrs']['blockRel'] : '';
 
@@ -274,6 +278,10 @@ add_filter( 'render_block', 'appro_add_block_id_rel_attributes', 10, 2 );
  */
 function appro_make_block_clickable( $block_content, $block ) {
 	if ( empty( $block_content ) || empty( $block['blockName'] ) || empty( $block['attrs']['makeBlockClickable'] ) ) {
+		return $block_content;
+	}
+
+	if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
 		return $block_content;
 	}
 
