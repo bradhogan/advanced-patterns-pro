@@ -213,46 +213,31 @@ add_filter( 'upload_mimes', 'cc_mime_types' );
 
 /**
  * Register custom block attributes for ID and rel across blocks.
- *
- * Cover and Group blocks also get the makeBlockClickable boolean used by the
- * editor control and frontend click-delegation behavior.
  */
 function appro_register_block_id_rel_attributes() {
 	$block_types = WP_Block_Type_Registry::get_instance()->get_all_registered();
 
 	foreach ( $block_types as $block_type ) {
-		$attributes     = is_array( $block_type->attributes ) ? $block_type->attributes : array();
-		$new_attributes = array();
+		$attributes = is_array( $block_type->attributes ) ? $block_type->attributes : array();
 
 		if ( ! isset( $attributes['blockId'] ) ) {
-			$new_attributes['blockId'] = array(
+			$attributes['blockId'] = array(
 				'type'    => 'string',
 				'default' => '',
 			);
 		}
 
 		if ( ! isset( $attributes['blockRel'] ) ) {
-			$new_attributes['blockRel'] = array(
+			$attributes['blockRel'] = array(
 				'type'    => 'string',
 				'default' => '',
 			);
 		}
 
-		if ( in_array( $block_type->name, array( 'core/cover', 'core/group' ), true ) && ! isset( $attributes['makeBlockClickable'] ) ) {
-			$new_attributes['makeBlockClickable'] = array(
-				'type'    => 'boolean',
-				'default' => false,
-			);
-		}
-
-		if ( empty( $new_attributes ) ) {
-			continue;
-		}
-
 		register_block_type_from_metadata(
 			$block_type->name,
 			array(
-				'attributes' => array_merge( $attributes, $new_attributes ),
+				'attributes' => $attributes,
 			)
 		);
 	}
@@ -264,10 +249,6 @@ add_action( 'init', 'appro_register_block_id_rel_attributes', 11 );
  */
 function appro_add_block_id_rel_attributes( $block_content, $block ) {
 	if ( empty( $block_content ) || ! isset( $block['attrs'] ) ) {
-		return $block_content;
-	}
-
-	if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
 		return $block_content;
 	}
 
@@ -295,40 +276,3 @@ function appro_add_block_id_rel_attributes( $block_content, $block ) {
 	return $block_content;
 }
 add_filter( 'render_block', 'appro_add_block_id_rel_attributes', 10, 2 );
-
-/**
- * Mark Cover and Group blocks as clickable without injecting overlay markup.
- *
- * The frontend behavior is handled in build/appro.js using click delegation so
- * Cover block visuals and nested interactive controls remain stable.
- */
-function appro_make_block_clickable( $block_content, $block ) {
-	if ( empty( $block_content ) || empty( $block['blockName'] ) || empty( $block['attrs']['makeBlockClickable'] ) ) {
-		return $block_content;
-	}
-
-	if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
-		return $block_content;
-	}
-
-	if ( ! in_array( $block['blockName'], array( 'core/cover', 'core/group' ), true ) ) {
-		return $block_content;
-	}
-
-	$processor = new WP_HTML_Tag_Processor( $block_content );
-
-	if ( ! $processor->next_tag() ) {
-		return $block_content;
-	}
-
-	$existing_class = $processor->get_attribute( 'class' );
-	$classes        = preg_split( '/\s+/', trim( (string) $existing_class ) );
-	$classes        = is_array( $classes ) ? array_filter( $classes ) : array();
-	$classes[]      = 'appro-clickable-block';
-
-	$processor->set_attribute( 'class', implode( ' ', array_unique( $classes ) ) );
-	$processor->set_attribute( 'data-appro-clickable', 'true' );
-
-	return $processor->get_updated_html();
-}
-add_filter( 'render_block', 'appro_make_block_clickable', 20, 2 );
