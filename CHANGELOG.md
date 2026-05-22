@@ -10,3 +10,4 @@
 - Split shared block behavior into dedicated editor and frontend scripts for better Gutenberg compatibility.
 - Scoped pricing toggle interactions so editor and frontend toggles can target the correct block wrapper.
 - Improved Site Editor pricing toggle detection by listening on toggle items instead of only nested buttons.
+- Switched Site Editor pricing toggle matching to index-based grouping because editor DOM does not reliably expose custom rel attributes.

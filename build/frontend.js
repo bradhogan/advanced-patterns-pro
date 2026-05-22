@@ -1,31 +1,38 @@
-function getToggleScope( button, fallbackRoot ) {
-	return button.closest( '.appro-pricing-toggle' ) || fallbackRoot;
+function getToggleScope( element, fallbackRoot ) {
+	return element.closest( '.appro-pricing-toggle' ) || fallbackRoot;
 }
 
-function approHandleToggleClick( fallbackRoot, button ) {
-	var parentDiv = button.closest( '[rel]' );
+function getToggleItems( scope ) {
+	return Array.prototype.slice.call(
+		scope.querySelectorAll( '.toggle-controls > .wp-block-button, .toggle-controls [data-type="core/button"]' )
+	);
+}
 
-	if ( ! parentDiv ) {
+function getPricingOptions( scope ) {
+	return Array.prototype.slice.call( scope.querySelectorAll( '.pricing-options' ) );
+}
+
+function approHandleToggleClick( fallbackRoot, toggleItem ) {
+	var scope = getToggleScope( toggleItem, fallbackRoot );
+	var toggleItems = getToggleItems( scope );
+	var pricingOptions = getPricingOptions( scope );
+	var activeIndex = toggleItems.indexOf( toggleItem.closest( '.wp-block-button, [data-type="core/button"]' ) );
+
+	if ( activeIndex === -1 ) {
+		activeIndex = toggleItems.indexOf( toggleItem );
+	}
+
+	if ( activeIndex === -1 ) {
 		return;
 	}
 
-	var relValue = parentDiv.getAttribute( 'rel' );
-	var scope = getToggleScope( button, fallbackRoot );
-
-	scope.querySelectorAll( '.toggle-controls [rel]' ).forEach( function( div ) {
-		div.classList.remove( 'active' );
+	toggleItems.forEach( function( item, index ) {
+		item.classList.toggle( 'active', index === activeIndex );
 	} );
 
-	scope.querySelectorAll( '.pricing-options' ).forEach( function( option ) {
-		option.classList.remove( 'active' );
+	pricingOptions.forEach( function( option, index ) {
+		option.classList.toggle( 'active', index === activeIndex );
 	} );
-
-	parentDiv.classList.add( 'active' );
-
-	var targetOption = scope.querySelector( '.pricing-options[rel="' + relValue + '"]' );
-	if ( targetOption ) {
-		targetOption.classList.add( 'active' );
-	}
 }
 
 function isInteractiveElement( element ) {
@@ -93,7 +100,9 @@ function bindApproInteractions( doc ) {
 	doc.__approInteractionsBound = true;
 
 	doc.addEventListener( 'click', function( event ) {
-		var toggleItem = event.target.closest( '.toggle-controls [rel]' );
+		var toggleItem = event.target.closest(
+			'.toggle-controls > .wp-block-button, .toggle-controls [data-type="core/button"]'
+		);
 		if ( toggleItem ) {
 			event.preventDefault();
 			approHandleToggleClick( doc, toggleItem );
