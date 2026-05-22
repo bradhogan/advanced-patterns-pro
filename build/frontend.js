@@ -93,10 +93,10 @@ function bindApproInteractions( doc ) {
 	doc.__approInteractionsBound = true;
 
 	doc.addEventListener( 'click', function( event ) {
-		var toggleButton = event.target.closest( '.toggle-controls button' );
-		if ( toggleButton ) {
+		var toggleItem = event.target.closest( '.toggle-controls [rel]' );
+		if ( toggleItem ) {
 			event.preventDefault();
-			approHandleToggleClick( doc, toggleButton );
+			approHandleToggleClick( doc, toggleItem );
 			return;
 		}
 

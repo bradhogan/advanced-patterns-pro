@@ -9,3 +9,4 @@
 - Added supporting editor controls, render markers, and styles for clickable block behavior.
 - Split shared block behavior into dedicated editor and frontend scripts for better Gutenberg compatibility.
 - Scoped pricing toggle interactions so editor and frontend toggles can target the correct block wrapper.
+- Improved Site Editor pricing toggle detection by listening on toggle items instead of only nested buttons.
