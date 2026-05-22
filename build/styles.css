@@ -170,12 +170,9 @@ ul.is-style-lines li:first-of-type:before {
   margin-left: 0 !important;
 }
 
-.appro-clickable-block {
+.appro-clickable-block,
+.appro-clickable-block :where(a, button, .wp-block-button__link, [role=button]) {
   cursor: pointer;
-}
-
-.appro-clickable-block :where(a, button, input, select, textarea, summary, [role=button]) {
-  cursor: auto;
 }
 
 .testimonial-card-height-100 .wp-block-cover__inner-container {

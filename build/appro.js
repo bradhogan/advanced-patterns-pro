@@ -137,7 +137,9 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	} );
 
 	function isInteractiveElement( element ) {
-		return !! element.closest( 'a, button, input, select, textarea, summary, [role="button"], .wp-block-button' );
+		return !! element.closest(
+			'a, button, input, select, textarea, summary, [role="button"], [contenteditable="true"], .wp-block-button'
+		);
 	}
 
 	function getPrimaryLink( container ) {
@@ -146,10 +148,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 		for ( var i = 0; i < links.length; i++ ) {
 			var link = links[i];
-			if ( link.classList.contains( 'appro-clickable-block__overlay' ) ) {
-				continue;
-			}
-
 			var href = ( link.getAttribute( 'href' ) || '' ).trim();
 			if ( ! href ) {
 				continue;
@@ -170,35 +168,33 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	function handleClickableBlock( event ) {
 		var container = event.currentTarget;
 
-		if ( isInteractiveElement( event.target ) ) {
+		if ( isInteractiveElement( event.target ) || event.defaultPrevented ) {
 			return;
 		}
 
 		var primaryLink = getPrimaryLink( container );
-		if ( ! primaryLink ) {
+		if ( ! primaryLink || ! primaryLink.href ) {
 			return;
 		}
 
-		var href = primaryLink.getAttribute( 'href' );
-		if ( ! href ) {
+		if ( event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ) {
+			primaryLink.dispatchEvent(
+				new MouseEvent( 'click', {
+					bubbles: true,
+					cancelable: true,
+					ctrlKey: event.ctrlKey,
+					metaKey: event.metaKey,
+					shiftKey: event.shiftKey,
+					altKey: event.altKey
+				} )
+			);
 			return;
 		}
 
-		if ( event.metaKey || event.ctrlKey ) {
-			window.open( href, primaryLink.getAttribute( 'target' ) || '_blank' );
-			return;
-		}
-
-		if ( primaryLink.getAttribute( 'target' ) === '_blank' ) {
-			window.open( href, '_blank' );
-			return;
-		}
-
-		window.location.href = href;
+		primaryLink.click();
 	}
 
 	document.querySelectorAll( '.appro-clickable-block[data-appro-clickable="true"]' ).forEach( function( block ) {
-		block.style.cursor = 'pointer';
 		block.addEventListener( 'click', handleClickableBlock );
 	} );
 } );

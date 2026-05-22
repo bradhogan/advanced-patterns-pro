@@ -189,12 +189,9 @@ ul.is-style-lines {
 }
 
 // CLICKABLE COVER/GROUP BLOCKS
-.appro-clickable-block {
+.appro-clickable-block,
+.appro-clickable-block :where(a, button, .wp-block-button__link, [role="button"]) {
 	cursor: pointer;
-}
-
-.appro-clickable-block :where(a, button, input, select, textarea, summary, [role="button"]) {
-	cursor: auto;
 }
 
 // A FEW FIXES
