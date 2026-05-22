@@ -12,6 +12,47 @@ function getPricingOptions( scope ) {
 	return Array.prototype.slice.call( scope.querySelectorAll( '.pricing-options' ) );
 }
 
+function syncPricingToggleState( scope ) {
+	var toggleItems = getToggleItems( scope );
+	var pricingOptions = getPricingOptions( scope );
+	var activeIndex = -1;
+
+	if ( ! toggleItems.length || ! pricingOptions.length ) {
+		return;
+	}
+
+	pricingOptions.forEach( function( option, index ) {
+		if ( activeIndex === -1 && option.classList.contains( 'active' ) ) {
+			activeIndex = index;
+		}
+	} );
+
+	if ( activeIndex === -1 ) {
+		activeIndex = 0;
+	}
+
+	toggleItems.forEach( function( item, index ) {
+		item.classList.toggle( 'active', index === activeIndex );
+	} );
+
+	pricingOptions.forEach( function( option, index ) {
+		option.classList.toggle( 'active', index === activeIndex );
+	} );
+}
+
+function syncAllPricingToggles( root ) {
+	var scopes = root.querySelectorAll( '.appro-pricing-toggle' );
+
+	if ( scopes.length ) {
+		scopes.forEach( function( scope ) {
+			syncPricingToggleState( scope );
+		} );
+		return;
+	}
+
+	syncPricingToggleState( root );
+}
+
 function approHandleToggleClick( fallbackRoot, toggleItem ) {
 	var scope = getToggleScope( toggleItem, fallbackRoot );
 	var toggleItems = getToggleItems( scope );
@@ -114,6 +155,21 @@ function bindApproInteractions( doc ) {
 			handleClickableBlock( event, clickableBlock );
 		}
 	} );
+
+	syncAllPricingToggles( doc );
+
+	if ( window.MutationObserver ) {
+		var observer = new MutationObserver( function() {
+			syncAllPricingToggles( doc );
+		} );
+
+		observer.observe( doc.body, {
+			childList: true,
+			subtree: true,
+			attributes: true,
+			attributeFilter: [ 'class' ]
+		} );
+	}
 }
 
 document.addEventListener( 'DOMContentLoaded', function() {
