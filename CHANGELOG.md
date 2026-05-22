@@ -14,3 +14,4 @@
 - Added editor-safe pricing toggle styles so active buttons match and pricing panels stay visible while editing.
 - Added pricing pattern wrapper and editor resync logic so toggle state persists better during editor rerenders.
 - Removed aggressive pricing toggle mutation observing after it caused admin/frontend rendering instability.
+- Removed unsafe PHP-side block re-registration that could destabilize core block/admin rendering.

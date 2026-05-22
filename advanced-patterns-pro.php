@@ -234,54 +234,6 @@ function cc_mime_types( $mimes ) {
 add_filter( 'upload_mimes', 'cc_mime_types' );
 
 /**
- * Register custom block attributes for ID and rel across blocks.
- *
- * Cover and Group blocks also get the makeBlockClickable boolean used by the
- * editor control and frontend click-delegation behavior.
- */
-function appro_register_block_id_rel_attributes() {
-	$block_types = WP_Block_Type_Registry::get_instance()->get_all_registered();
-
-	foreach ( $block_types as $block_type ) {
-		$attributes     = is_array( $block_type->attributes ) ? $block_type->attributes : array();
-		$new_attributes = array();
-
-		if ( ! isset( $attributes['blockId'] ) ) {
-			$new_attributes['blockId'] = array(
-				'type'    => 'string',
-				'default' => '',
-			);
-		}
-
-		if ( ! isset( $attributes['blockRel'] ) ) {
-			$new_attributes['blockRel'] = array(
-				'type'    => 'string',
-				'default' => '',
-			);
-		}
-
-		if ( in_array( $block_type->name, array( 'core/cover', 'core/group' ), true ) && ! isset( $attributes['makeBlockClickable'] ) ) {
-			$new_attributes['makeBlockClickable'] = array(
-				'type'    => 'boolean',
-				'default' => false,
-			);
-		}
-
-		if ( empty( $new_attributes ) ) {
-			continue;
-		}
-
-		register_block_type_from_metadata(
-			$block_type->name,
-			array(
-				'attributes' => array_merge( $attributes, $new_attributes ),
-			)
-		);
-	}
-}
-add_action( 'init', 'appro_register_block_id_rel_attributes', 11 );
-
-/**
  * Add ID and rel attributes to block output.
  */
 function appro_add_block_id_rel_attributes( $block_content, $block ) {
