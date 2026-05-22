@@ -163,7 +163,7 @@ function advancedpatternspro_register_patterns() {
 add_action( 'init', 'advancedpatternspro_register_patterns' );
 
 /**
- * Enqueue the plugin's shared styles for both editor and front-end.
+ * Enqueue the plugin's build CSS for both editor and front-end.
  */
 function advancedpatternspro_enqueue_assets() {
 	$css_file = advancedpatternspro_PLUGIN_DIR . 'build/styles.css';
@@ -182,47 +182,25 @@ function advancedpatternspro_enqueue_assets() {
 		$css_ver
 	);
 
-	$frontend_js_file = advancedpatternspro_PLUGIN_DIR . 'build/frontend.js';
-	$frontend_js_url  = advancedpatternspro_PLUGIN_URL . 'build/frontend.js';
+	$js_file = advancedpatternspro_PLUGIN_DIR . 'build/appro.js';
+	$js_url  = advancedpatternspro_PLUGIN_URL . 'build/appro.js';
 
-	if ( file_exists( $frontend_js_file ) ) {
-		$frontend_js_ver = filemtime( $frontend_js_file );
-
-		wp_enqueue_script(
-			'advanced-patterns-pro-frontend',
-			$frontend_js_url,
-			array(),
-			$frontend_js_ver,
-			true
-		);
-		wp_script_add_data( 'advanced-patterns-pro-frontend', 'defer', true );
-	}
-}
-add_action( 'enqueue_block_assets', 'advancedpatternspro_enqueue_assets' );
-
-/**
- * Enqueue editor-only script for block inspector controls.
- */
-function advancedpatternspro_enqueue_editor_assets() {
-	$editor_js_file = advancedpatternspro_PLUGIN_DIR . 'build/editor.js';
-	$editor_js_url  = advancedpatternspro_PLUGIN_URL . 'build/editor.js';
-
-	if ( ! file_exists( $editor_js_file ) ) {
+	if ( ! file_exists( $js_file ) ) {
 		return;
 	}
 
-	$editor_js_ver = filemtime( $editor_js_file );
+	$js_ver = filemtime( $js_file );
 
 	wp_enqueue_script(
-		'advanced-patterns-pro-editor',
-		$editor_js_url,
+		'advanced-patterns-pro-js',
+		$js_url,
 		array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-hooks', 'wp-compose', 'wp-block-editor' ),
-		$editor_js_ver,
+		$js_ver,
 		true
 	);
-	wp_script_add_data( 'advanced-patterns-pro-editor', 'defer', true );
+	wp_script_add_data( 'advanced-patterns-pro-js', 'defer', true );
 }
-add_action( 'enqueue_block_editor_assets', 'advancedpatternspro_enqueue_editor_assets' );
+add_action( 'enqueue_block_assets', 'advancedpatternspro_enqueue_assets' );
 
 /**
  * Allow SVG uploads.
@@ -232,6 +210,54 @@ function cc_mime_types( $mimes ) {
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'cc_mime_types' );
+
+/**
+ * Register custom block attributes for ID and rel across blocks.
+ *
+ * Cover and Group blocks also get the makeBlockClickable boolean used by the
+ * editor control and frontend click-delegation behavior.
+ */
+function appro_register_block_id_rel_attributes() {
+	$block_types = WP_Block_Type_Registry::get_instance()->get_all_registered();
+
+	foreach ( $block_types as $block_type ) {
+		$attributes     = is_array( $block_type->attributes ) ? $block_type->attributes : array();
+		$new_attributes = array();
+
+		if ( ! isset( $attributes['blockId'] ) ) {
+			$new_attributes['blockId'] = array(
+				'type'    => 'string',
+				'default' => '',
+			);
+		}
+
+		if ( ! isset( $attributes['blockRel'] ) ) {
+			$new_attributes['blockRel'] = array(
+				'type'    => 'string',
+				'default' => '',
+			);
+		}
+
+		if ( in_array( $block_type->name, array( 'core/cover', 'core/group' ), true ) && ! isset( $attributes['makeBlockClickable'] ) ) {
+			$new_attributes['makeBlockClickable'] = array(
+				'type'    => 'boolean',
+				'default' => false,
+			);
+		}
+
+		if ( empty( $new_attributes ) ) {
+			continue;
+		}
+
+		register_block_type_from_metadata(
+			$block_type->name,
+			array(
+				'attributes' => array_merge( $attributes, $new_attributes ),
+			)
+		);
+	}
+}
+add_action( 'init', 'appro_register_block_id_rel_attributes', 11 );
 
 /**
  * Add ID and rel attributes to block output.
@@ -273,7 +299,7 @@ add_filter( 'render_block', 'appro_add_block_id_rel_attributes', 10, 2 );
 /**
  * Mark Cover and Group blocks as clickable without injecting overlay markup.
  *
- * The frontend behavior is handled in build/frontend.js using click delegation so
+ * The frontend behavior is handled in build/appro.js using click delegation so
  * Cover block visuals and nested interactive controls remain stable.
  */
 function appro_make_block_clickable( $block_content, $block ) {
