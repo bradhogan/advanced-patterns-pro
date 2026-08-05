@@ -1,0 +1,44 @@
+Copyright (c) 2026 Brad Hogan dba Advanced Patterns Pro. All rights reserved.
+
+This software is proprietary and confidential. By downloading, installing, or using this plugin, you agree to the following terms:
+
+License Grant
+
+You are granted a limited, non-exclusive, non-transferable, revocable license to use this plugin only while you maintain an active, valid subscription and license purchased from the copyright owner.
+
+Restrictions
+
+You may not:
+
+Copy, reproduce, modify, distribute, sublicense, sell, lease, or share this plugin or any portion of its source code.
+Redistribute this plugin in any form, whether free or paid.
+Upload, publish, or make this plugin available on any public or private repository, website, marketplace, or file-sharing service.
+Remove or alter any copyright notices or proprietary markings.
+Subscription Requirement
+
+An active subscription and valid license are required to:
+
+Install and use the plugin.
+Receive plugin updates.
+Access support.
+Continue using the plugin in accordance with this license.
+
+If your subscription or license expires, is canceled, or is terminated, your license to use the plugin immediately ends. Continued use after termination is prohibited.
+
+Ownership
+
+This plugin, including all source code, documentation, images, trademarks, and related intellectual property, remains the exclusive property of Advanced Patterns Pro. Purchasing a subscription or license does not transfer ownership of the software.
+
+No Warranty
+
+This plugin is provided "AS IS" without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
+
+Limitation of Liability
+
+To the fullest extent permitted by law, the copyright owner shall not be liable for any damages arising from the use of or inability to use this plugin.
+
+Contact
+
+For licensing questions or support, please contact:
+support@advancedpatternspro.com
+

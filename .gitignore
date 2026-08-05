@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+._*
+
+# CodeKit
+config.codekit3
+
+# Node
+node_modules/
+
+# Build artifacts (keep build/ folder but ignore source maps if any)
+*.map
+
+# Editor
+.vscode/
+.idea/
+
+# WordPress
+*.log
