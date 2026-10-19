@@ -1,0 +1,16 @@
+<?php
+// Prevent direct access.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Gallery, two column layout
+ */
+return array(
+	'name'        => 'gallery-two-colum s',
+	'title'       => 'Two columns with a photo gallery',
+	'description' => 'Heading with text and a photo gallery',
+	'categories'  => array( 'appro-text' ),
+	'content'     => '<!-- wp:group {"metadata":{"categories":["appro-text"],"patternName":"all-patterns-pro/columns-two-with-gallery","name":"Two columns with a photo gallery"},"align":"full","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} --><div class="wp-block-group alignfull" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:columns {"verticalAlignment":null,"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70"}}}} --><div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"center"} --><div class="wp-block-column is-vertically-aligned-center"><!-- wp:heading --><h2 class="wp-block-heading">A clean two-column layout with a lightbox gallery.</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Bacon ipsum dolor amet ball tip kevin cupim jowl pork belly. Burgdoggen beef ribs drumstick, kielbasa picanha.</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Button</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div><!-- /wp:column --><!-- wp:column --><div class="wp-block-column"><!-- wp:gallery {"linkTo":"lightbox","style":{"spacing":{"blockGap":{"top":"10px","left":"10px"}}}} --><figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"lightbox":{"enabled":true},"id":1046,"sizeSlug":"large","linkDestination":"none"} --><figure class="wp-block-image size-large"><img src="{{PLUGIN_URL}}images/yoga.jpg" alt="" class="wp-image-1046"/></figure><!-- /wp:image --><!-- wp:image {"lightbox":{"enabled":true},"id":994,"sizeSlug":"large","linkDestination":"none"} --><figure class="wp-block-image size-large"><img src="{{PLUGIN_URL}}images/surfing.jpg" alt="" class="wp-image-994"/></figure><!-- /wp:image --><!-- wp:image {"lightbox":{"enabled":true},"id":1230,"sizeSlug":"large","linkDestination":"none"} --><figure class="wp-block-image size-large"><img src="{{PLUGIN_URL}}images/skater.jpg" alt="" class="wp-image-1230"/></figure><!-- /wp:image --><!-- wp:image {"lightbox":{"enabled":true},"id":631,"sizeSlug":"large","linkDestination":"none"} --><figure class="wp-block-image size-large"><img src="{{PLUGIN_URL}}images/snowboarder.jpg" alt="" class="wp-image-631"/></figure><!-- /wp:image --><!-- wp:image {"lightbox":{"enabled":true},"id":510,"sizeSlug":"large","linkDestination":"none"} --><figure class="wp-block-image size-large"><img src="{{PLUGIN_URL}}images/profile-large.jpg" alt="" class="wp-image-510"/></figure><!-- /wp:image --></figure><!-- /wp:gallery --></div><!-- /wp:column --></div><!-- /wp:columns --></div><!-- /wp:group -->',
+);
