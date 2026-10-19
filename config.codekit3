@@ -17,6 +17,14 @@
       "oAP" : "\/advanced-patterns-pro.php",
       "oF" : 0
     },
+    "\/advanced-patterns-pro.zip" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/advanced-patterns-pro.zip",
+      "oF" : 0
+    },
     "\/build\/appro-min.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -35,7 +43,7 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/build\/appro-min.js",
-      "oF" : 1,
+      "oF" : 0,
       "sC" : 3,
       "tS" : 0
     },
@@ -72,12 +80,12 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/edd-sample-plugin.php" : {
+    "\/composer.lock" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/edd-sample-plugin.php",
+      "oAP" : "\/composer.lock",
       "oF" : 0
     },
     "\/images\/basket.jpg" : {
@@ -207,12 +215,12 @@
     },
     "\/images\/logo-1.png" : {
       "ft" : 32768,
-      "iS" : 7590,
+      "iS" : 2025,
       "oA" : 0,
       "oAP" : "\/images\/logo-1.png",
       "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 90,
@@ -220,12 +228,12 @@
     },
     "\/images\/logo-2.png" : {
       "ft" : 32768,
-      "iS" : 16696,
+      "iS" : 4301,
       "oA" : 0,
       "oAP" : "\/images\/logo-2.png",
       "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 90,
@@ -233,12 +241,12 @@
     },
     "\/images\/logo-3.png" : {
       "ft" : 32768,
-      "iS" : 21523,
+      "iS" : 3618,
       "oA" : 0,
       "oAP" : "\/images\/logo-3.png",
       "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 90,
@@ -246,12 +254,12 @@
     },
     "\/images\/logo-4.png" : {
       "ft" : 32768,
-      "iS" : 14307,
+      "iS" : 3806,
       "oA" : 0,
       "oAP" : "\/images\/logo-4.png",
       "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 90,
@@ -259,12 +267,12 @@
     },
     "\/images\/logo-5.png" : {
       "ft" : 32768,
-      "iS" : 32694,
+      "iS" : 7167,
       "oA" : 0,
       "oAP" : "\/images\/logo-5.png",
       "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 90,
@@ -272,12 +280,12 @@
     },
     "\/images\/logo-6.png" : {
       "ft" : 32768,
-      "iS" : 17130,
+      "iS" : 3258,
       "oA" : 0,
       "oAP" : "\/images\/logo-6.png",
       "oF" : 0,
-      "oIPL" : 1,
-      "opt" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 90,
@@ -392,7 +400,7 @@
       "oAP" : "\/images\/profile-large.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 1,
+      "opt" : 0,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
@@ -431,7 +439,7 @@
       "oAP" : "\/images\/surfing.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 1,
+      "opt" : 0,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
@@ -444,7 +452,7 @@
       "oAP" : "\/images\/yoga.jpg",
       "oF" : 0,
       "oIPL" : 0,
-      "opt" : 1,
+      "opt" : 0,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
@@ -1007,6 +1015,482 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/readme.txt",
+      "oF" : 0
+    },
+    "\/vendor\/autoload.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/autoload.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_classmap.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/autoload_classmap.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_namespaces.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/autoload_namespaces.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_psr4.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/autoload_psr4.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_real.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/autoload_real.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/autoload_static.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/autoload_static.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/ClassLoader.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/ClassLoader.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/installed.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/vendor\/composer\/installed-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/vendor\/composer\/installed.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/installed.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/InstalledVersions.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/InstalledVersions.php",
+      "oF" : 0
+    },
+    "\/vendor\/composer\/LICENSE" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/composer\/LICENSE",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/css\/style-edd-sl-sdk.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/css\/style-edd-sl-sdk-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/index.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/index-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/js\/edd-sl-sdk.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/js\/edd-sl-sdk-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/style-index.asset.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/style-index.asset.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/style-index.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/build\/style-index-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/css\/_toggle.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/css\/_toggle.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/css\/style.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/css\/style.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/data.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 1,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/data-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/index.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/index-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/license.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 1,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/license-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/utils\/overlay.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 1,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/assets\/src\/js\/utils\/overlay-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/composer.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/composer-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/composer.lock" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/composer.lock",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/edd-sl-sdk.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/edd-sl-sdk.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/languages\/edd-sl-sdk.pot" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/languages\/edd-sl-sdk.pot",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Admin\/Notices.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Admin\/Notices.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Handlers\/Handler.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Handlers\/Handler.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Handlers\/Plugin.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Handlers\/Plugin.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Handlers\/Theme.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Handlers\/Theme.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Licensing\/License.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Licensing\/License.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Licensing\/Messages.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Licensing\/Messages.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Messenger.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Messenger.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Registry.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Registry.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Requests\/API.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Requests\/API.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Templates.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Templates.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Traits\/Messenger.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Traits\/Messenger.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Updaters\/Plugin.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Updaters\/Plugin.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Updaters\/Theme.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Updaters\/Theme.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Updaters\/Updater.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Updaters\/Updater.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Utilities\/Path.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Utilities\/Path.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Utilities\/Tokenizer.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Utilities\/Tokenizer.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Versions.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/src\/Versions.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/templates\/license-control.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/templates\/license-control.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/autoload.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/autoload.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_classmap.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_classmap.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_namespaces.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_namespaces.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_psr4.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_psr4.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_real.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_real.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_static.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/autoload_static.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/ClassLoader.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/ClassLoader.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/installed.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/installed-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/installed.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/installed.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/InstalledVersions.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/InstalledVersions.php",
+      "oF" : 0
+    },
+    "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/LICENSE" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/vendor\/easy-digital-downloads\/edd-sl-sdk\/vendor\/composer\/LICENSE",
       "oF" : 0
     }
   },

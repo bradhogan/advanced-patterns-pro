@@ -30,6 +30,32 @@ if ( ! defined( 'advancedpatternspro_PLUGIN_URL' ) ) {
 
 
 /**
+ * EDD Software Licensing SDK bootstrap.
+ */
+$appro_edd_sdk_handler = __DIR__ . '/vendor/easy-digital-downloads/edd-sl-sdk/edd-sl-sdk.php';
+if ( file_exists( $appro_edd_sdk_handler ) ) {
+	require_once $appro_edd_sdk_handler;
+}
+
+add_action(
+	'edd_sl_sdk_registry',
+	function ( $init ) {
+		$init->register(
+			array(
+				'id'          => 'advanced-patterns-pro',
+				'url'         => 'https://advancedpatternspro.com',
+				'item_id'     => 7775,
+				'version'     => '1.0.0',
+				'file'        => __FILE__,
+				'option_name' => 'advanced_patterns_pro_license_key',
+				'type'        => 'plugin',
+			)
+		);
+	}
+);
+
+
+/**
  * Register block styles.
  */
 function advancedpatternspro_register_block_styles() {
