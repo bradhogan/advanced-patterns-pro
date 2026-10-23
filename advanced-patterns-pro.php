@@ -3,7 +3,7 @@
  * Plugin Name: Advanced Patterns Pro
  * Plugin URI: https://advancedpatternspro.com
  * Description: Gorgeous designs using built-in WordPress blocks so your site won't break!
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Brad Hogan
  * Author URI: https://advancedpatternspro.com
  * License: Private
@@ -45,7 +45,7 @@ add_action(
 				'id'          => 'advanced-patterns-pro',
 				'url'         => 'https://advancedpatternspro.com',
 				'item_id'     => 7775,
-				'version'     => '1.0.0',
+				'version'     => '1.0.1',
 				'file'        => __FILE__,
 				'option_name' => 'advanced_patterns_pro_license_key',
 				'type'        => 'plugin',
@@ -54,6 +54,74 @@ add_action(
 	}
 );
 
+const APP_STORE_URL  = 'https://advancedpatternspro.com';
+const APP_ITEM_ID    = 7775;
+const APP_ITEM_NAME  = 'Advanced Patterns Pro';
+const APP_KEY_OPTION = 'advanced_patterns_pro_license_key';
+
+function app_get_license_status() {
+	$key = trim( (string) get_option( APP_KEY_OPTION ) );
+	if ( '' === $key ) {
+		return 'missing';
+	}
+
+	$status = get_transient( 'app_license_status' );
+	if ( false !== $status ) {
+		return $status;
+	}
+
+	$response = wp_remote_post(
+		APP_STORE_URL,
+		array(
+			'timeout' => 15,
+			'body'    => array(
+				'edd_action' => 'check_license',
+				'license'    => $key,
+				'item_id'    => APP_ITEM_ID,
+				'url'        => home_url(),
+			),
+		)
+	);
+
+	// If the store can't be reached, say nothing and try again later.
+	if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+		return 'unknown';
+	}
+
+	$data   = json_decode( wp_remote_retrieve_body( $response ) );
+	$status = $data->license ?? 'unknown';
+
+	set_transient( 'app_license_status', $status, 12 * HOUR_IN_SECONDS );
+
+	return $status;
+}
+
+add_action(
+	'admin_notices',
+	function () {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$status = app_get_license_status();
+		$page   = admin_url( 'plugins.php' );
+
+		if ( in_array( $status, array( 'missing', 'inactive', 'site_inactive' ), true ) ) {
+			$message = sprintf( 'Activate your license for %s. Visit the plugin page and click Manage License.', APP_ITEM_NAME );
+		} elseif ( 'expired' === $status ) {
+			$message = sprintf( 'Your subscription for %s has expired. Renew it to keep getting updates and support.', APP_ITEM_NAME );
+		} else {
+			return;
+		}
+
+		printf(
+			'<div class="notice notice-warning"><p>%s <a href="%s">%s</a></p></div>',
+			esc_html( $message ),
+			esc_url( $page ),
+			esc_html__( 'Update license', 'advanced-patterns-pro' )
+		);
+	}
+);
 
 /**
  * Register block styles.
